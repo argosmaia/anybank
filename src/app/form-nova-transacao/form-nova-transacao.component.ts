@@ -2,10 +2,11 @@ import { Component, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Transacao } from '../modelos/transacao';
 import { TipoTransacao } from '../tipos/tipo-transacao';
+import { KeyValuePipe } from '@angular/common';
 
 @Component({
   selector: 'app-form-nova-transacao',
-  imports: [FormsModule],
+  imports: [FormsModule, KeyValuePipe],
   standalone: true,
   templateUrl: './form-nova-transacao.component.html',
   styleUrl: './form-nova-transacao.component.css'
@@ -13,8 +14,9 @@ import { TipoTransacao } from '../tipos/tipo-transacao';
 export class FormNovaTransacaoComponent {
   
   valor: number = 0;
-  tipoTransacao = "saque";
-  valorTransacao = "50";
+  tipoTransacao = "";
+  valorTransacao = "";
+  tipoTransacaoEnum = TipoTransacao;
 
   onValorInput(event: Event) {
     const input = event.target as HTMLInputElement;
